@@ -24,7 +24,7 @@
  FOR A PARTICULAR PURPOSE. See the license for more details.
 */
 
-#include <ql/math/distributions/generalizedhyperbolicdistribution.hpp>
+#include <ql/experimental/math/distributions/generalizedhyperbolicdistribution.hpp>
 #include <ql/math/constants.hpp>
 #include <boost/math/special_functions/bessel.hpp>
 #include <cmath>
