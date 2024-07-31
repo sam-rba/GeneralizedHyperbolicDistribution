@@ -52,5 +52,3 @@ namespace QuantLib {
         return scale * std::exp(exponent) * boost::math::cyl_bessel_k(lambda_ - 0.5, alpha_ * std::sqrt(delta_ * delta_ + z * z));
     }
 }
-
-#endif
