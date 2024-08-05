@@ -45,7 +45,7 @@ namespace QuantLib {
     };
 
     Real GeneralizedHyperbolicDistribution::operator()(Real x) const {
-		Real z = x - mu_;
+        Real z = x - mu_;
         Real gamma = std::sqrt(alpha_ * alpha_ - beta_ * beta_);
         Real scale = std::pow(gamma / delta_, lambda_) / (std::sqrt(2 * M_PI) * boost::math::cyl_bessel_k(lambda_, delta_ * gamma));
         Real exponent = beta_ * z;
