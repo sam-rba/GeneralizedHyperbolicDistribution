@@ -24,25 +24,20 @@
  FOR A PARTICULAR PURPOSE. See the license for more details.
 */
 
-#include <ql/experimental/math/distributions/generalizedhyperbolicdistribution.hpp>
-#include <ql/math/constants.hpp>
+#include <ql/errors.hpp>
+#include <ql/experimental/math/generalizedhyperbolicdistribution.hpp>
+#include <ql/types.hpp>
+//#include <ql/math/constants.hpp>
 #include <boost/math/special_functions/bessel.hpp>
 #include <cmath>
 
 namespace QuantLib {
 
-    class GeneralizedHyperbolicDistribution {
-      public:
-        GeneralizedHyperbolicDistribution(Real lambda, Real alpha, Real beta, Real delta, Real mu)
-        : lambda_(lambda), alpha_(alpha), beta_(beta), delta_(delta), mu_(mu) {
-            QL_REQUIRE(alpha > std::abs(beta), "alpha must be greater than |beta|");
-        }
 
-        Real operator()(Real x) const;
-
-      private:
-        Real lambda_, alpha_, beta_, delta_, mu_;
-    };
+    GeneralizedHyperbolicDistribution::GeneralizedHyperbolicDistribution(Real lambda, Real alpha, Real beta, Real delta, Real mu)
+       : lambda_(lambda), alpha_(alpha), beta_(beta), delta_(delta), mu_(mu) {
+        QL_REQUIRE(alpha > std::abs(beta), "alpha must be greater than |beta|");
+    }
 
     Real GeneralizedHyperbolicDistribution::operator()(Real x) const {
         Real z = x - mu_;
@@ -50,8 +45,9 @@ namespace QuantLib {
         Real scale = std::pow(gamma / delta_, lambda_) / (std::sqrt(2 * M_PI) * boost::math::cyl_bessel_k(lambda_, delta_ * gamma));
         Real exponent = beta_ * z;
         return scale
-			* std::exp(exponent)
-			* boost::math::cyl_bessel_k(lambda_ - 0.5, alpha_ * std::sqrt(delta_ * delta_ + z * z))
-			/ std::pow(std::sqrt(delta_ * delta_ + z * z) / alpha_, 0.5 - lambda_);
+                        * std::exp(exponent)
+                        * boost::math::cyl_bessel_k(lambda_ - 0.5, alpha_ * std::sqrt(delta_ * delta_ + z * z))
+                        / std::pow(std::sqrt(delta_ * delta_ + z * z) / alpha_, 0.5 - lambda_);
     }
+    
 }
