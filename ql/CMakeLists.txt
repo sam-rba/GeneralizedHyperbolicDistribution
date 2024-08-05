@@ -173,6 +173,7 @@ set(QL_SOURCES
     experimental/math/fireflyalgorithm.cpp
     experimental/math/gaussiancopulapolicy.cpp
     experimental/math/gaussiannoncentralchisquaredpolynomial.cpp
+    experimental/math/generalizedhyperbolicdistribution.cpp
     experimental/math/laplaceinterpolation.cpp
     experimental/math/multidimintegrator.cpp
     experimental/math/multidimquadrature.cpp
@@ -1165,6 +1166,7 @@ set(QL_HEADERS
     experimental/math/frankcopularng.hpp
     experimental/math/gaussiancopulapolicy.hpp
     experimental/math/gaussiannoncentralchisquaredpolynomial.hpp
+    experimental/math/generalizedhyperbolicdistribution.hpp
     experimental/math/hybridsimulatedannealing.hpp
     experimental/math/hybridsimulatedannealingfunctors.hpp
     experimental/math/isotropicrandomwalk.hpp
